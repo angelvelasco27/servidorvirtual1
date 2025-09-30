@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Impactos del Cambio Climático</title>
+    <link rel="stylesheet" href="dise.css" />
+  </head>
+  <body>
+    <!-- lo que me ayuda a crear el fondo -->
+    <canvas id="canvas"></canvas>
+    <header>
+      <p></p>
+      <h1>
+        <img src="fts/portada.jpeg" class="imagen-inline" />
+        Cambios Climáticos
+      </h1>
+    </header>
+
+    <nav class="navbar">
+      <ul>
+        <li>
+          <button class="btn-nav">
+            <a href="index.html" class="a">Inicio</a>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="contenedor">
+      <article class="articulo">
+        <h2>Impactos del Cambio Climático</h2>
+        <p>
+          <strong>1. Impacto ambiental 🌱🐠</strong><br />
+          Pérdida de biodiversidad: extinción de especies animales y
+          vegetales.<br />
+          Destrucción de hábitats como arrecifes de coral, selvas y
+          glaciares.<br />
+          Alteración de ecosistemas marinos (acidificación del océano, migración
+          de peces).<br />
+          Aumento de incendios forestales y desertificación de tierras
+          fértiles.<br /><br />
+
+          <strong>2. Impacto social 👩‍👩‍👧‍👦🏘️</strong><br />
+          Escasez de agua potable en regiones áridas.<br />
+          Inseguridad alimentaria por daños en la agricultura y ganadería.<br />
+          Migraciones masivas (“refugiados climáticos”) desde zonas costeras o
+          desérticas.<br />
+          Aumento de la vulnerabilidad de comunidades pobres y marginadas.<br /><br />
+
+          <strong>3. Impacto en la salud humana 🏥</strong><br />
+          Más enfermedades respiratorias y cardiovasculares por la contaminación
+          del aire.<br />
+          Expansión de virus transmitidos por mosquitos (malaria, dengue,
+          zika).<br />
+          Golpes de calor y deshidratación en climas extremos.<br />
+          Estrés psicológico y emocional por desastres naturales y
+          desplazamientos.<br /><br />
+
+          <strong>4. Impacto económico 💰📉</strong><br />
+          Pérdidas en agricultura, ganadería, pesca y turismo.<br />
+          Costos elevados en reconstrucción tras huracanes, inundaciones y
+          sequías.<br />
+          Riesgo para infraestructuras costeras y transporte.<br />
+          Afecta el desarrollo económico de países dependientes de recursos
+          naturales.<br /><br />
+
+          <strong>5. Impacto político y geoestratégico ⚖️🌐</strong><br />
+          Conflictos por recursos naturales escasos (agua, alimentos,
+          tierras).<br />
+          Inestabilidad en países vulnerables por migraciones forzadas.<br />
+          Mayor presión sobre gobiernos para implementar políticas
+          ambientales.<br />
+          Necesidad de cooperación internacional para frenar el calentamiento
+          global.<br />
+        </p>
+
+        <div class="imagen">
+          <img src="fts/9.jpeg" alt="Impactos del cambio climático" />
+        </div>
+      </article>
+
+      <aside class="programada">
+        <h3>🔥 "Lo que necesitas, al mejor precio"</h3>
+        <p>
+          Encuentra ofertas irresistibles en productos de calidad. 🛒 Descuentos
+          hasta el 50% 🚚 Envíos rápidos y seguros 💳 Paga fácil y sin
+          complicaciones Llamado a la acción: 👉 “Compra hoy y ahorra”
+        </p>
+        <img src="imagen/1.jpeg" alt="Publicidad" class="propaganda" />
+      </aside>
+    </div>
+
+    <footer class="pie">21/09/25</footer>
+
+    <!-- Script de partículas y temas -->
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let particles = [];
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 4 + 1;
+          this.speedX = Math.random() * 1 - 0.5;
+          this.speedY = Math.random() * 1 - 0.5;
+          this.color = Math.random() > 0.5 ? "#4CAF50" : "#2196F3";
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+          if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+      }
+
+      function init() {
+        particles = [];
+        for (let i = 0; i < 150; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p) => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+
+      init();
+      animate();
+
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        init();
+      });
+    </script>
+  </body>
+</html>

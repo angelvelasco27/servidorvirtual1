@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Causas del Cambio Climático 🌍🔥</title>
+    <link rel="stylesheet" href="dise.css" />
+  </head>
+  <body>
+    <!-- lo que me ayuda a crear el fondo -->
+    <canvas id="canvas"></canvas>
+    <header>
+      <p></p>
+      <h1>
+        <img src="fts/portada.jpeg" class="imagen-inline" />
+        Cambios Climáticos
+      </h1>
+    </header>
+
+    <nav class="navbar">
+      <ul>
+        <li>
+          <button class="btn-nav">
+            <a href="index.html" class="a">Inicio</a>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="contenedor">
+      <article class="articulo">
+        <h2>Causas del Cambio Climático 🌍🔥</h2>
+        <p>
+          <strong>1. Quema de combustibles fósiles</strong><br />
+          Qué es: Uso de petróleo, carbón y gas natural para generar energía,
+          transporte e industrias.<br />
+          Efecto: Libera grandes cantidades de dióxido de carbono (CO₂) y otros
+          gases de efecto invernadero que atrapan el calor en la atmósfera.<br /><br />
+
+          <strong>2. Deforestación</strong><br />
+          Qué es: Tala de bosques para agricultura, ganadería o urbanización.<br />
+          Efecto: Los árboles absorben CO₂, por lo que al desaparecer se reduce
+          la capacidad de la Tierra de limpiar el aire. Además, al quemarlos o
+          talarlos, se libera el carbono almacenado.<br /><br />
+
+          <strong>3. Agricultura y ganadería intensiva</strong><br />
+          Qué es: Producción masiva de alimentos con fertilizantes químicos,
+          pesticidas y crianza de ganado a gran escala.<br />
+          Efecto: Libera gases como el metano (CH₄) del ganado y el óxido
+          nitroso (N₂O) de los fertilizantes, ambos mucho más potentes que el
+          CO₂.<br /><br />
+
+          <strong>4. Uso excesivo de recursos naturales</strong><br />
+          Qué es: Sobreexplotación de agua, suelos, bosques y pesca.<br />
+          Efecto: Daña ecosistemas, reduce la capacidad de la naturaleza de
+          autorregularse y aumenta la vulnerabilidad al cambio climático.<br /><br />
+
+          <strong>5. Industria y producción masiva</strong><br />
+          Qué es: Fábricas que producen cemento, acero, plásticos y otros bienes
+          de consumo.<br />
+          Efecto: Emisión de gases contaminantes y residuos que contribuyen al
+          calentamiento global.<br /><br />
+
+          <strong>6. Aumento del transporte motorizado</strong><br />
+          Qué es: Uso intensivo de automóviles, camiones, aviones y barcos.<br />
+          Efecto: Gran fuente de CO₂ y otros contaminantes, especialmente en las
+          ciudades.<br /><br />
+
+          <strong>7. Generación de residuos y contaminación</strong><br />
+          Qué es: Acumulación de basura, plásticos y desechos mal
+          gestionados.<br />
+          Efecto: La descomposición de residuos en vertederos libera metano y
+          contamina suelos y aguas.<br /><br />
+
+          <strong>8. Crecimiento demográfico y consumo excesivo</strong><br />
+          Qué es: Aumento de la población y estilos de vida con alto consumo
+          energético.<br />
+          Efecto: Mayor demanda de energía, alimentos, transporte y bienes, lo
+          que multiplica las emisiones.<br /><br />
+
+          <strong>9. Uso de energías no renovables</strong><br />
+          Qué es: Dependencia de fuentes como el carbón y petróleo en lugar de
+          energía solar, eólica o hidráulica.<br />
+          Efecto: Genera emisiones que intensifican el efecto invernadero.<br /><br />
+
+          <strong>10. Cambios en el uso del suelo</strong><br />
+          Qué es: Expansión de ciudades, carreteras y monocultivos en lugar de
+          áreas verdes.<br />
+          Efecto: Se pierde biodiversidad y se altera la capacidad natural de
+          los ecosistemas de absorber CO₂.<br />
+        </p>
+
+        <div class="imagen">
+          <img src="fts/causa.jpeg" alt="Deforestación y contaminación" />
+        </div>
+      </article>
+
+      <aside class="programada">
+        <h3>
+🎉 "Hazlo a tu estilo, hazlo único"</h3>
+        <p>La vida es mejor cuando brillas con lo que te gusta.
+      💡 Diseños modernos
+      🎨 Colores vibrantes
+      ⚡ Hechos para ti</p>
+        
+      </aside>
+    </div>
+
+    <footer class="pie">21/09/25</footer>
+
+    <!-- Script de partículas y temas -->
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let particles = [];
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 4 + 1;
+          this.speedX = Math.random() * 1 - 0.5;
+          this.speedY = Math.random() * 1 - 0.5;
+          this.color = Math.random() > 0.5 ? "#4CAF50" : "#2196F3";
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+          if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+      }
+
+      function init() {
+        particles = [];
+        for (let i = 0; i < 150; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p) => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+
+      init();
+      animate();
+
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        init();
+      });
+    </script>
+  </body>
+</html>
